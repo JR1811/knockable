@@ -1,0 +1,8 @@
+{
+  "knock": {
+    "subtitle": "sound.knockable.knock",
+    "sounds": [
+      "knockable:knocking_01"
+    ]
+  }
+}

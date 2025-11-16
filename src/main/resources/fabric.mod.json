@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "knockable",
+	"version": "${version}",
+	"name": "Knockable",
+	"description": "Make your presence known by knocking on doors and chests",
+	"authors": [
+		"DEV - ShiroJR1811"
+	],
+	"contact": {
+		"homepage": "https://github.com/JR1811",
+		"sources": "https://github.com/JR1811/knockable"
+	},
+	"license": "GPL-3.0 license",
+	"icon": "assets/knockable/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.shirojr.knockable.Knockable"
+		],
+		"client": [
+			"net.shirojr.knockable.KnockableClient"
+		],
+		"fabric-datagen": [
+			"net.shirojr.knockable.KnockableDataGenerator"
+		]
+	},
+	"mixins": [
+		"knockable.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
