@@ -15,7 +15,7 @@ Just use the newly added `"Knock"` Keybind on any valid block.
 
 ## 🔧 Configuration
 
-- Knockable blocks can be specified with the newly added [knockable:knockable](src/main/generated/data/knockable/tags/blocks/knockable.json) block tag
+- Knockable blocks can be specified with the newly added [knockable:knockable](src/main/generated/data/knockable/tags/blocks/knockable.json) block tag, but by default, all blocks in door, trapdoor, chests and barrel block tags are included 
 - Using the `"knockingRange"` Gamerule, the max distance of valid knocking can be specified
 
 <div style="text-align: center;">
