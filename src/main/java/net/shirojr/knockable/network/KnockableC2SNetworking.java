@@ -28,8 +28,8 @@ public class KnockableC2SNetworking {
             ServerWorld world = player.getServerWorld();
             BlockState hitState = world.getBlockState(hitPos);
             if (!hitState.isIn(KnockableTags.Blocks.KNOCKABLE_BLOCKS)) return;
-            int maxRange = world.getGameRules().getInt(KnockableGamerules.KNOCKING_RANGE);
-            int sqMaxRange = maxRange * maxRange;
+            double maxRange = world.getGameRules().get(KnockableGamerules.KNOCKING_RANGE).get();
+            double sqMaxRange = maxRange * maxRange;
             double sqDistanceToBlock = player.squaredDistanceTo(hitPos.toCenterPos());
             if (sqDistanceToBlock > sqMaxRange) return;
 

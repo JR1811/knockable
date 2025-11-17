@@ -14,7 +14,7 @@ public class KnockableServerEvents implements ServerPlayConnectionEvents.Join {
     @Override
     public void onPlayReady(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
         PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeVarInt(server.getGameRules().getInt(KnockableGamerules.KNOCKING_RANGE));
+        buf.writeDouble(server.getGameRules().get(KnockableGamerules.KNOCKING_RANGE).get());
         ServerPlayNetworking.send(handler.player, NetworkIdentifiers.KNOCKING_RANGE, buf);
     }
 }
