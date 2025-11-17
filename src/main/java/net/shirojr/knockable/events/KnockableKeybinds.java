@@ -4,15 +4,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.shirojr.knockable.network.NetworkIdentifiers;
+import net.shirojr.knockable.network.packet.KnockingRaycastPacket;
 
 import java.util.function.Consumer;
 
@@ -40,12 +37,10 @@ public class KnockableKeybinds implements ClientTickEvents.EndTick {
         if (client.player == null || client.world == null) return;
 
         handleRisingEdge(KNOCK_KEY_BIND, wasKnocked, aBoolean -> wasKnocked = aBoolean, () -> {
-            HitResult hitResult = client.player.raycast(getRange(), client.getTickDelta(), false);
+            HitResult hitResult = client.player.raycast(getRange(), client.getRenderTickCounter().getTickDelta(false), false);
             if (!(hitResult instanceof BlockHitResult blockHitResult)) return;
             wasKnocked = true;
-            PacketByteBuf buf = PacketByteBufs.create();
-            buf.writeBlockPos(blockHitResult.getBlockPos());
-            ClientPlayNetworking.send(NetworkIdentifiers.KNOCKING_RAYCAST, buf);
+            new KnockingRaycastPacket(blockHitResult.getBlockPos()).sendPacket();
         });
     }
 

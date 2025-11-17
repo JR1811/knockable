@@ -8,6 +8,7 @@ import net.shirojr.knockable.init.KnockableGamerules;
 import net.shirojr.knockable.init.KnockableSounds;
 import net.shirojr.knockable.init.KnockableTags;
 import net.shirojr.knockable.network.KnockableC2SNetworking;
+import net.shirojr.knockable.network.KnockablePayloads;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,7 @@ public class Knockable implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		KnockableEvents.registerCommon();
+		KnockablePayloads.initialize();
 		KnockableC2SNetworking.initialize();
 		KnockableGamerules.initialize();
 		KnockableTags.initialize();

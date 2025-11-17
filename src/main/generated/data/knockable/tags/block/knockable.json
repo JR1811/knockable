@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     {
       "id": "#minecraft:doors",
@@ -14,7 +13,7 @@
       "required": false
     },
     {
-      "id": "#c:wooden_barrels",
+      "id": "#c:barrels/wooden",
       "required": false
     },
     {
